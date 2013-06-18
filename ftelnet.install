@@ -1,13 +1,82 @@
-<?php 
+<?php
 
 /**
  * Implementation of hook_install().
  */
- 
+
 function ftelnet_install() { // Set default ftelnet variables
 
+variable_set('ftelnet_server',
+  array(
+    'server_name' => 'godta',
+    'telnet_host_name' => 'ftelnet.ca',
+    'web_socket_host_name' => 'ftelnet.ca',
+    'socket_policy_port' => 843,
+    'web_socket_port' => 1123,
+    'telnet_port' => 23,
+  )
+);
+variable_set('ftelnet_rlogin',
+  array(
+    'rlogin' => 0,
+	'rlogin_host_name' => 'ftelnet.ca',
+	'rlogin_client_user_name' => 'user',
+	'rlogin_server_user_name' => 'server user',
+	'rlogin_port' => 513,
+	'rlogin_terminal_type' => 'ansi-bbs',
+  )
+);
+
+variable_set('ftelnet_proxy',
+  array(
+    'use_proxy' => 0,
+    'rlogin_host_name' => 'proxy.ftelnet.ca',
+    'telnet_host_name' => 'proxy.ftelnet.ca',
+    'web_socket_host_name' => 'proxy.ftelnet.ca',
+    'socket_policy_port' => 843,
+    'telnet_port' => 2323,
+    'web_socket_port' => 11235,
+    'rlogin_port' => 51313,
+  )
+);
+
+variable_set('ftelnet_misc',
+  array(
+    'auto_connect' => 0,
+    'vt' => 0,
+    'local_echo' => 0,
+    'bps' => 115200,
+    'enter' => '\r\n',
+    'send_on_connect' => '',
+  )
+);
+variable_set('ftelnet_display',
+  array(
+    'connect_ansi' => '/sites/default/modules/ftelnet/ftelnet-resources/prelogon.txt',
+	'conect_rip' => '/sites/default/modules/ftelnet/ftelnet-resources/connectrip.txt',
+	'rip_icon_path' => '/sites/default/modules/ftelnet/ftelnet-resources/ripicon',
+	'save_files_button_down' => '/sites/default/modules/ftelnet/ftelnet-resources/SaveFilesDown.png',
+    'save_files_button_up' => '/sites/default/modules/ftelnet/ftelnet-resources/SaveFilesUp.png',
+	'save_files_button_over' => '/sites/default/modules/ftelnet/ftelnet-resources/SaveFilesOver.png',
+	'connect_button_down' => '/sites/default/modules/ftelnet/ftelnet-resources/ConnectDown.png',
+	'connect_button_up' => '/sites/default/modules/ftelnet/ftelnet-resources/ConnectUp.png',
+	'connect_button_over' => '/sites/default/modules/ftelnet/ftelnet-resources/ConnectOver.png',
+	'connect_button_x' => -0.32,
+	'connect_button_y' => 0.68,
+	'alert_dialog_x' => 0,
+	'alert_dialog_y' => 0,
+	'use_rip' => 0,
+	'code_page' => '437',
+	'font_width' => 9,
+	'font_height' => 16,
+	'screen_columns' => 80,
+	'screen_rows' => 24,
+	'virtual_keyboard_width' => 1,
+  )
+);
+
 variable_set('ftelnet_ServerName', 'godta');
-variable_set('ftelnet_ConnectAnsi', '/sites/all/themes/godta-teal/telnet/ftelnet-resources/prelogon.ans');
+variable_set('ftelnet_ConnectAnsi', '/sites/default/modules/ftelnet/ftelnet-resources/prelogon.txt');
 variable_set('ftelnet_TelnetHostName', $_SERVER['HTTP_HOST']);
 variable_set('ftelnet_BitsPerSecond', '115200');
 variable_set('ftelnet_SocketPolicyPort', '843');
@@ -26,6 +95,6 @@ variable_delete('ftelnet_BitsPerSecond');
 variable_delete('ftelnet_SocketPolicyPort');
 variable_delete('ftelnet_TelnetPort');
 variable_delete('ftelnet_ConnectButtonX');
-variable_delete('ftelnet_ConnectButtonY');	
-	
+variable_delete('ftelnet_ConnectButtonY');
+
 }
