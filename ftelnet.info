@@ -1,0 +1,7 @@
+name = fTelnet
+description = fTelnet Drupal Integration
+core = 7.x
+package = BBS
+dependencies[] = block
+files[] = ftelnet.module
+configure = admin/config/bbs/ftelnet/settings

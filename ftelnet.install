@@ -1,0 +1,31 @@
+<?php 
+
+/**
+ * Implementation of hook_install().
+ */
+ 
+function ftelnet_install() { // Set default ftelnet variables
+
+variable_set('ftelnet_ServerName', 'godta');
+variable_set('ftelnet_ConnectAnsi', '/sites/all/themes/godta-teal/telnet/ftelnet-resources/prelogon.ans');
+variable_set('ftelnet_TelnetHostName', $_SERVER['HTTP_HOST']);
+variable_set('ftelnet_BitsPerSecond', '115200');
+variable_set('ftelnet_SocketPolicyPort', '843');
+variable_set('ftelnet_TelnetPort', '23');
+variable_set('ftelnet_ConnectButtonX', '-0.32');
+variable_set('ftelnet_ConnectButtonY', '0.68');
+
+}
+
+function ftelnet_uninstall() { // Delete fTelnet variables
+
+variable_delete('ftelnet_ServerName');
+variable_delete('ftelnet_ConnectAnsi');
+variable_delete('ftelnet_TelnetHostName');
+variable_delete('ftelnet_BitsPerSecond');
+variable_delete('ftelnet_SocketPolicyPort');
+variable_delete('ftelnet_TelnetPort');
+variable_delete('ftelnet_ConnectButtonX');
+variable_delete('ftelnet_ConnectButtonY');	
+	
+}
